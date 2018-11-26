@@ -1,16 +1,17 @@
-FROM ubuntu:stable
+FROM ubuntu:xenial
 MAINTAINER "David Patawaran <david.patawaran@gmail.com>"
 
 # install necessary packages
 RUN apt-get update && \
     apt-get install -y \
     pinentry-curses xz-utils \
-    python3-pip && \
+    python3-pip git && \
     apt-get clean
 
-RUN pip3 install virtualenv && \
-    virtualenv venv && \
-    source venv/bin/activate
+RUN cd ~ \
+  && pip3 install virtualenv \
+  && virtualenv venv
+ENV PATH="~/venv/bin/activate:${PATH}"
 
 RUN apt-get update && \
     apt-get install -y \
@@ -18,13 +19,13 @@ RUN apt-get update && \
     python3-dev && \
     apt-get clean
 
-RUN git clone https://github.com/dpat/smsblog.git
-RUN git clone https://github.com/dpat/smsface.git
-RUN cd smsblog
-RUN pip3 install -r requirements.txt
-RUN pip3 install .
-RUN smsblog init
-RUN pip3 install mod_wsgi
+RUN cd ~ \
+  && git clone https://github.com/dpat/smsblog.git \
+  && git clone https://github.com/dpat/smsface.git \
+  && cd smsblog \
+  && pip3 install -r requirements.txt \
+  && pip3 install . \
+  && smsblog init
 
 COPY smsface_wsgi.txt ~/smsface_wsgi.txt
 COPY smsblog_wsgi.txt ~/smsblog_wsgi.txt
