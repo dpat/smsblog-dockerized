@@ -1,0 +1,37 @@
+NameVirtualHost         *:80
+
+<VirtualHost *:80>
+                ServerName sms.placeholder_url
+                WSGIScriptAlias / /var/www/smsblog/smsblog.wsgi
+                <Directory /var/www/smsblog/smsblog/>
+                        Order allow,deny
+                        Allow from all
+                </Directory>
+                Alias /static /var/www/smsblog/smsblog/static
+                <Directory /var/www/smsblog/smsblog/static/>
+                        Order allow,deny
+                        Allow from all
+                </Directory>
+
+                ErrorLog ${APACHE_LOG_DIR}/error.log
+                LogLevel warn
+                CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
+
+<VirtualHost *:80>
+                ServerName placeholder_url
+                WSGIScriptAlias / /var/www/smsface/smsface.wsgi
+                <Directory /var/www/smsface/smsface/>
+                        Order allow,deny
+                        Allow from all
+                </Directory>
+                Alias /static /var/www/smsface/smsface/static
+                <Directory /var/www/smsface/smsface/static/>
+                        Order allow,deny
+                        Allow from all
+                </Directory>
+
+                ErrorLog ${APACHE_LOG_DIR}/error.log
+                LogLevel warn
+                CustomLog ${APACHE_LOG_DIR}/access.log combined
+</VirtualHost>
