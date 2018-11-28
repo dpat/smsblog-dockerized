@@ -20,6 +20,8 @@ function set_vars {
 
     sed -i "s@placeholder_url@$DOMAIN@g" smsface_wsgi.txt
     sed -i "s@placeholder_token@$TOKEN@g" smsface_wsgi.txt
+    sed -i "s@placeholder_pass@$PASSWORD@g" smsface_wsgi.txt
+
 
     sed -i "s@placeholder_url@$DOMAIN@g" smsblog_conf.txt
 

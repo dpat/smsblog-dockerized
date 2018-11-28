@@ -7,7 +7,7 @@ from smsblog import smsblog
 
 app = smsblog.return_app()
 smsblog.BPHandler.register_blueprints(app)
-smsblog.config_dabase(app)
+smsblog.config_database(app)
 app.config['num'] = 'placeholder_num'
 app.config['site_url'] = 'http://sms.placeholder_url/sms'
 app.config['auth_token'] = 'placeholder_auth_token'

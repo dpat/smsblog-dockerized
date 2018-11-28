@@ -8,4 +8,5 @@ sys.path.append('~/smsface')
 from smsface.smsface import app
 app.config['baseurl'] = 'http://sms.placeholder_url'
 app.config['token'] = 'placeholder_token'
+app.config['password'] = 'placeholder_pass'
 application = app
