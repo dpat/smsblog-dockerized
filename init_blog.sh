@@ -28,6 +28,8 @@ function set_vars {
     echo "$IP $DOMAIN" >> /etc/hosts
     echo "$IP sms.$DOMAIN" >> /etc/hosts
 
+    mkdir /var/www/smsblog
+    cp -r smsface /var/www/.
     cp smsblog_wsgi.txt /var/www/smsblog/smsblog.wsgi
     cp smsface_wsgi.txt /var/www/smsface/smsface.wsgi
     cp smsblog_conf.txt /etc/apache2/sites-available/smsblog.conf
